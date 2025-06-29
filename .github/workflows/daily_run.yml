@@ -25,18 +25,30 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt # تثبيت المكتبات من requirements.txt
 
-    - name: Run the daily forecast pipeline
-      # هذا الجزء يقوم بتشغيل السكريبت الذي يحتوي على كود الموديل
-      run: python daily_forecast_pipeline.py # تشغيل سكريبت البايثون الخاص بك
+    # --- تشغيل موديل الطقس ---
+    - name: Run Weather Model (daily_forecast_pipeline.py)
+      run: python daily_forecast_pipeline.py
+
+    # --- تشغيل موديل تعليقات العملاء ---
+    - name: Run Customer Comments Model (nlp_reviews_pipeline.py)
+      run: python nlp_reviews_pipeline.py
+
+    # --- تشغيل موديل خروج العملاء ---
+    - name: Run Customer Churn Model (churn_model_pipeline.py)
+      run: python churn_model_pipeline.py
+
+    # --- تشغيل موديل السعر ---
+    - name: Run Price Model (price_model_pipeline.py)
+      run: python price_model_pipeline.py
 
     - name: Commit and Push new data (Temporarily Disabled)
       # هذه الخطوة معطلة مؤقتاً لأن ملف CSV لا يتم إنشاؤه بعد.
-      # يجب تفعيلها بعد إضافة كود بايثون لإنشاء ملف data/demand_forecasts_sample.csv
+      # يجب تفعيلها بعد إضافة كود بايثون لإنشاء ملفات مخرجات للموديلز.
       run: |
         git config user.name "GitHub Actions" # إعداد اسم المستخدم لـ Git (للقيام بالـ commit الآلي)
         git config user.email "actions@github.com" # إعداد بريد المستخدم لـ Git
-        # git add data/demand_forecasts_sample.csv # إضافة ملف البيانات المحدث (الذي عدّله السكريبت)
-        # git commit -m "Automated: Update daily demand forecast data" || echo "No changes to commit" # حفظ التغييرات (إذا كان هناك تغيير)
-        # git push origin main # رفع التغييرات إلى GitHub (هذا حاسم لتحديث الداشبورد)
+        # git add data/demand_forecasts_sample.csv # مثال: إضافة ملفات البيانات المحدثة هنا
+        # git commit -m "Automated: Update daily data from models" || echo "No changes to commit"
+        # git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # استخدام توكن GitHub للوصول
