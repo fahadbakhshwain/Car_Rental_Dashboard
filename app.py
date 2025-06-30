@@ -76,3 +76,29 @@ st.dataframe(df_optimal_prices.head())
 # ولابد من حذف أي جزء يخص الشك في الموديل لكي لا يؤثر علي الداش بورد
 # ستتم معالجة تحديثات الداشبورد من الموديلات الأخرى في خطوات لاحقة
 
+# =========================
+# 🟦 قسم عرض تنبؤات الطقس
+# =========================
+
+st.write("---")
+st.subheader("🌤️ تنبؤات الطقس اليومية")
+
+@st.cache_data
+def load_weather_forecast():
+    file_path = 'data/forecast_results/weather_forecast.csv'
+    if not os.path.exists(file_path):
+        st.warning("⚠️ ملف تنبؤ الطقس غير موجود (data/forecast_results/weather_forecast.csv)", icon="⚠️")
+        return pd.DataFrame()
+    try:
+        return pd.read_csv(file_path)
+    except Exception as e:
+        st.error(f"❌ خطأ في تحميل ملف الطقس: {e}")
+        return pd.DataFrame()
+
+df_weather = load_weather_forecast()
+
+if df_weather.empty:
+    st.info("لا توجد بيانات طقس حالياً.", icon="ℹ️")
+else:
+    st.write("🔎 يعرض هذا الجدول توقعات الطقس من نموذج الذكاء الاصطناعي.")
+    st.dataframe(df_weather, use_container_width=True)
