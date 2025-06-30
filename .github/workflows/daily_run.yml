@@ -49,7 +49,8 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add data/forecast_results/weather_forecast.csv # إضافة ملف الطقس الذي تم إنشاؤه
-        git commit -m "Automated: Update data from weather model" || echo "No changes to commit"
+        git add data/predictions/churn_predictions.csv # **هذا هو السطر الذي ينقصنا! تم إضافته هنا.**
+        git commit -m "Automated: Update data from weather and churn models" || echo "No changes to commit"
         git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
