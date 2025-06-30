@@ -41,14 +41,13 @@ jobs:
     - name: Run Price Model (price_model_pipeline.py)
       run: python price_model_pipeline.py
 
-    - name: Commit and Push new data (Temporarily Disabled)
-      # هذه الخطوة معطلة مؤقتاً لأن ملف CSV لا يتم إنشاؤه بعد.
-      # يجب تفعيلها بعد إضافة كود بايثون لإنشاء ملفات مخرجات للموديلز.
+    - name: Commit and Push new data (Automated)
+      # هذه الخطوة تقوم بحفظ ودفع مخرجات الموديلز إلى GitHub
       run: |
-        git config user.name "GitHub Actions" # إعداد اسم المستخدم لـ Git (للقيام بالـ commit الآلي)
-        git config user.email "actions@github.com" # إعداد بريد المستخدم لـ Git
-        # git add data/demand_forecasts_sample.csv # مثال: إضافة ملفات البيانات المحدثة هنا
-        # git commit -m "Automated: Update daily data from models" || echo "No changes to commit"
-        # git push origin main
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add data/forecast_results/weather_forecast.csv # إضافة ملف الطقس الذي تم إنشاؤه
+        git commit -m "Automated: Update data from weather model" || echo "No changes to commit"
+        git push origin main
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # استخدام توكن GitHub للوصول
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
