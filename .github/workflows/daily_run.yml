@@ -30,6 +30,8 @@ jobs:
     # --- تشغيل موديل الطقس ---
     - name: Run Weather Model (daily_forecast_pipeline.py)
       run: python daily_forecast_pipeline.py
+      env: # إضافة هذه الأسطر الجديدة
+        OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }} # تمرير السر هنا
 
     # --- تشغيل موديل تعليقات العملاء ---
     - name: Run Customer Comments Model (nlp_reviews_pipeline.py)
@@ -51,8 +53,8 @@ jobs:
         git add data/forecast_results/weather_forecast.csv # إضافة ملف الطقس
         git add data/predictions/churn_predictions.csv # إضافة ملف تنبؤات الخروج
         git add data/sentiment_results/sentiment_analysis_results.csv # إضافة ملف تحليل المشاعر
-        git add data/pricing_results/optimal_prices.csv # **هذا هو السطر الذي ينقص! تم إضافته هنا.**
-        git commit -m "Automated: Update data from all four models (weather, churn, sentiment, price)" || echo "No changes to commit" # **رسالة Commit تم تحديثها!**
+        git add data/pricing_results/optimal_prices.csv # إضافة ملف التسعير
+        git commit -m "Automated: Update data from all four models (weather, churn, sentiment, price)" || echo "No changes to commit"
         git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
