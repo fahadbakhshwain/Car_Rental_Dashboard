@@ -51,7 +51,8 @@ jobs:
         git add data/forecast_results/weather_forecast.csv # إضافة ملف الطقس
         git add data/predictions/churn_predictions.csv # إضافة ملف تنبؤات الخروج
         git add data/sentiment_results/sentiment_analysis_results.csv # إضافة ملف تحليل المشاعر
-        git commit -m "Automated: Update data from weather, churn, and sentiment models" || echo "No changes to commit"
+        git add data/pricing_results/optimal_prices.csv # **هذا هو السطر الذي ينقص! تم إضافته هنا.**
+        git commit -m "Automated: Update data from all four models (weather, churn, sentiment, price)" || echo "No changes to commit" # **رسالة Commit تم تحديثها!**
         git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
