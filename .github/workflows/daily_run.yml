@@ -10,6 +10,8 @@ on:
 jobs:
   forecast:
     runs-on: ubuntu-latest # تشغيل على أحدث نسخة من نظام تشغيل أوبونتو (Linux)
+    permissions:
+      contents: write # إضافة هذه الأسطر الجديدة لتصحيح مشكلة الصلاحيات
 
     steps:
     - name: Checkout repository
