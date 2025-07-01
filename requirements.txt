@@ -10,3 +10,4 @@ nltk
 spacy
 textblob
 matplotlib
+seaborn
