@@ -638,7 +638,7 @@ SeniorCitizen,tenure,MonthlyCharges,TotalCharges,gender_Male,Partner_Yes,Depende
 0,2,20.5,38.25,False,False,True,True,False,False,False,True,True,False,True,False,True,False,True,False,True,False,True,False,True,False,False,False,False,False,0,0,0.06,Low Risk (Stable)
 0,0,20.25,0.0,True,False,True,True,False,False,False,True,True,False,True,False,True,False,True,False,True,False,True,False,False,True,False,False,False,True,0,0,0.08422222222222223,Low Risk (Stable)
 0,35,72.25,2568.55,False,True,True,True,False,True,False,False,False,True,False,False,False,True,False,True,False,True,False,False,False,False,False,False,True,False,1,0,0.16,Low Risk (Stable)
-0,2,19.5,27.55,False,False,False,True,False,False,False,True,True,False,True,False,True,False,True,False,True,False,True,False,False,False,False,False,False,True,0,1,0.6966666666666668,Medium Risk (Monitor)
+0,2,19.5,27.55,False,False,False,True,False,False,False,True,True,False,True,False,True,False,True,False,True,False,True,False,False,False,False,False,False,True,0,1,0.6966666666666665,Medium Risk (Monitor)
 0,68,62.65,4375.8,True,True,True,True,False,False,False,False,False,True,False,True,False,True,False,True,False,False,False,False,False,True,False,True,False,False,0,0,0.04,Low Risk (Stable)
 0,16,75.4,1189.4,True,True,False,True,False,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,True,False,0,1,0.66,Medium Risk (Monitor)
 0,72,110.9,8240.85,True,True,False,True,False,True,True,False,False,True,False,False,False,True,False,True,False,True,False,True,False,True,True,True,False,False,0,0,0.06,Low Risk (Stable)
